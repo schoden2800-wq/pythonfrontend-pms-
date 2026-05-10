@@ -119,8 +119,8 @@
 //   );
 // }
 import { useEffect, useState } from "react";
-import AdminLayout from "../components/AdminLayout";
-import "./Dashboard.css";
+import AdminLayout from "../components/qacomponents/QALayout";
+import "./QAPage.css";
 
 import {
   BarChart,

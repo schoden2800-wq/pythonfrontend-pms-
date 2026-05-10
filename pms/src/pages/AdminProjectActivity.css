@@ -1,0 +1,140 @@
+/* =========================
+   PAGE CONTAINER
+========================= */
+.activity-page {
+  margin-left: 240px;              /* matches admin layout */
+  margin-top: 20px;                /* moved closer to top */
+  padding: 26px;
+  min-height: calc(100vh - 60px);
+  background: #f9fafb;
+}
+
+/* =========================
+   HEADER
+========================= */
+.activity-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 12px;
+}
+
+.activity-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+}
+
+/* back button */
+.back-btn {
+  border: none;
+  background: #eef2ff;
+  padding: 8px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* =========================
+   LIST – CENTERED CONTENT
+========================= */
+.activity-list {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 6px;
+  overflow-y: auto;
+}
+
+/* remove old timeline */
+.activity-list::before {
+  display: none;
+}
+
+/* =========================
+   CARD STYLE
+========================= */
+.activity-item {
+  margin-bottom: 14px;
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 14px 16px;
+  border: 1px solid #eef1ff;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.05);
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+/* hover effect */
+.activity-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.08);
+}
+
+/* remove timeline dots */
+.activity-item::before {
+  display: none;
+}
+
+/* =========================
+   ACTION BADGE
+========================= */
+.activity-action-badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .3px;
+}
+
+/* color variants */
+.activity-action-badge[data-type="TASK_CREATED"] {
+  background: #ecfdf5;
+  color: #065f46;
+}
+
+.activity-action-badge[data-type="TASK_DELETED"] {
+  background: #fef2f2;
+  color: #7f1d1d;
+}
+
+.activity-action-badge[data-type="PROJECT_UPDATED"] {
+  background: #eff6ff;
+  color: #1e3a8a;
+}
+
+/* =========================
+   TEXT
+========================= */
+.activity-item p {
+  margin: 8px 0 4px 0;
+  font-size: 14px;
+  color: #111827;
+}
+
+.activity-item small {
+  color: #6b7280;
+  font-size: 12px;
+}
+
+/* empty state */
+.muted {
+  text-align: center;
+  color: #9ca3af;
+  margin-top: 40px;
+  font-size: 14px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .activity-page {
+    margin-left: 0;
+  }
+
+  .activity-list {
+    max-width: 92%;
+  }
+}

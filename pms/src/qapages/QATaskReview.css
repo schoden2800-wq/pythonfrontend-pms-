@@ -1,0 +1,115 @@
+.qa-review-page {
+  margin-left: 240px;
+  margin-top: 60px;
+  padding: 24px;
+  min-height: calc(100vh - 60px);
+  background: #f6f8fb;
+}
+
+.qa-review-page h2 {
+  font-size: 22px;
+  font-weight: 800;
+  margin-bottom: 14px;
+}
+
+.qa-review-page h2::after {
+  content: "";
+  display: block;
+  width: 46px;
+  height: 3px;
+  margin-top: 6px;
+  border-radius: 4px;
+  background: #e68d20;
+}
+
+/* TABLE */
+.qa-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 12px 32px rgba(0,0,0,.06);
+}
+
+.qa-table th,
+.qa-table td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.qa-table th {
+  background: #f9fafb;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.qa-table tr:hover {
+  background: #f3f4f6;
+}
+
+/* STATUS PILL */
+.status-badge {
+  padding: 6px 10px;
+  border-radius: 10px;
+  background: #e0f2fe;
+  color: #0369a1;
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: capitalize;
+}
+
+/* SELECT DROPDOWN */
+.qa-select {
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+}
+.tab {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #e5e7eb;
+  border: 1px solid #d1d5db;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.tab-active {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: #e68d20;
+  color: white;
+  border: 1px solid #e68d20;
+  font-weight: 800;
+}
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-box {
+  background: white;
+  padding: 18px;
+  width: 420px;
+  border-radius: 10px;
+}
+
+.modal-box textarea {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 12px;
+}

@@ -1,131 +1,11 @@
 
-// // import { useState } from "react";
-// // import { FaEye, FaEyeSlash } from "react-icons/fa";
-// // import { Link } from "react-router-dom";
-// // import "./Login.css";
-// // import logo from "../assets/logo.png";
-
-// // export default function Login() {
-// //   const [email, setEmail] = useState("");
-// //   const [password, setPassword] = useState("");
-// //   const [showPassword, setShowPassword] = useState(false);
-// //   const [loading, setLoading] = useState(false);
-// //   const [showSuccess, setShowSuccess] = useState(false);
-
-// //   const eyeIconStyle = {
-// //     position: "absolute",
-// //     right: "16px",
-// //     top: "50%",
-// //     transform: "translateY(-50%)",
-// //     cursor: "pointer",
-// //     color: "#9ca3af",
-// //     fontSize: "18px",
-// //   };
-
-// //   const handleSubmit = async (e) => {
-// //     e.preventDefault();
-// //     setLoading(true);
-
-// //     try {
-// //       const response = await fetch(
-// //         "https://pythonbackend-2.onrender.com/api/login",
-// //         {
-// //           method: "POST",
-// //           headers: { "Content-Type": "application/json" },
-// //           body: JSON.stringify({ email, password }),
-// //         }
-// //       );
-
-// //       const data = await response.json();
-
-// //       if (!response.ok) {
-// //         alert(data.message || "Login failed");
-// //         setLoading(false);
-// //         return;
-// //       }
-
-// //       console.log("Login success:", data);
-
-// //       // 🔐 Save token if needed
-// //       // localStorage.setItem("token", data.access_token);
-
-// //       // ✅ SHOW POPUP
-// //       setShowSuccess(true);
-
-// //       // ⏱ Auto-close popup (and redirect later)
-// //       setTimeout(() => {
-// //         setShowSuccess(false);
-// //         // navigate("/dashboard");
-// //       }, 2000);
-
-// //     } catch (error) {
-// //       console.error("Login error:", error);
-// //       alert("Server error. Please try again later.");
-// //     } finally {
-// //       setLoading(false);
-// //     }
-// //   };
-
-// //   return (
-// //     <>
-// //       {/* SUCCESS POPUP */}
-// //       {showSuccess && (
-// //         <div className="success-overlay">
-// //           <div className="success-popup">
-// //             <h3>✅ Login Successful</h3>
-// //             <p>Welcome back!</p>
-// //           </div>
-// //         </div>
-// //       )}
-
-// //       <div className="login-page">
-// //         <form className="login-form" onSubmit={handleSubmit}>
-// //           <img src={logo} alt="Logo" className="login-logo" />
-
-// //           <h2>Login</h2>
-
-// //           <input
-// //             type="email"
-// //             placeholder="Email"
-// //             value={email}
-// //             onChange={(e) => setEmail(e.target.value)}
-// //             required
-// //           />
-
-// //           <div className="password-wrapper">
-// //             <input
-// //               type={showPassword ? "text" : "password"}
-// //               placeholder="Password"
-// //               value={password}
-// //               onChange={(e) => setPassword(e.target.value)}
-// //               required
-// //             />
-
-// //             <span
-// //               style={eyeIconStyle}
-// //               onClick={() => setShowPassword(!showPassword)}
-// //             >
-// //               {showPassword ? <FaEyeSlash /> : <FaEye />}
-// //             </span>
-// //           </div>
-
-// //           <div className="forgot-password">
-// //             <Link to="/forgot-password">Forgot password?</Link>
-// //           </div>
-
-// //           <button type="submit" disabled={loading}>
-// //             {loading ? "Logging in..." : "Login"}
-// //           </button>
-// //         </form>
-// //       </div>
-// //     </>
-// //   );
-// // }
 // import { useState } from "react";
 // import { FaEye, FaEyeSlash } from "react-icons/fa";
 // import { Link, useNavigate } from "react-router-dom";
 // import "./Login.css";
 // import logo from "../assets/logo.png";
+
+// const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 // export default function Login() {
 //   const [email, setEmail] = useState("");
@@ -151,42 +31,45 @@
 //     setLoading(true);
 
 //     try {
-//       const response = await fetch(
-//         "https://pythonbackend-2.onrender.com/api/login",
-//         {
-//           method: "POST",
-//           headers: { "Content-Type": "application/json" },
-//           body: JSON.stringify({ email, password }),
-//         }
-//       );
+//       const response = await fetch(`${API_BASE}/api/login`, {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ email, password }),
+//       });
 
 //       const data = await response.json();
 
 //       if (!response.ok) {
-//         alert(data.message || "Login failed");
+//         alert(data.detail || data.message || "Login failed");
 //         return;
 //       }
 
-//       console.log("Login success:", data);
+//       // Save important data
+//       localStorage.setItem("token", data.token);
+//       localStorage.setItem("user_email", data.user.email);
+//       localStorage.setItem("user_name", data.user.name);
+//       localStorage.setItem("user_role", data.user.role);
 
-//       /* ================= SAVE LOGIN DATA ================= */
-//       localStorage.setItem("user_email", email);
+//       console.log("Token saved:", localStorage.getItem("token"));
+//       console.log("Role saved:", localStorage.getItem("user_role"));
 
-//       // If backend sends token / role (optional)
-//       if (data.access_token) {
-//         localStorage.setItem("token", data.access_token);
-//       }
-//       if (data.role) {
-//         localStorage.setItem("user_role", data.role);
-//       }
-
-//       /* ================= SUCCESS POPUP ================= */
 //       setShowSuccess(true);
 
-//       /* ================= REDIRECT ================= */
+//       // REDIRECT BASED ON ROLE
 //       setTimeout(() => {
 //         setShowSuccess(false);
-//         navigate("/admin/dashboard");
+
+//         const role = (data.user.role || "").toLowerCase();
+//         console.log("Detected role:", role);
+
+//         if (role === "admin") {
+//           navigate("/admin/dashboard");
+//         } else if (role === "employee") {
+//           navigate("/employee/dashboard");
+//         } else {
+//           // fallback if unknown role
+//           navigate("/");
+//         }
 //       }, 1500);
 
 //     } catch (error) {
@@ -203,8 +86,7 @@
 //       {showSuccess && (
 //         <div className="success-overlay">
 //           <div className="success-popup">
-//             <h3> Login Successful</h3>
-
+//             <h3>Login Successful</h3>
 //           </div>
 //         </div>
 //       )}
@@ -256,7 +138,8 @@ import { useState } from "react";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
-import logo from "../assets/logo.png";
+import logo from "../assets/logo1.png";
+
 const API_BASE = import.meta.env.VITE_API_BASE_URL;
 
 export default function Login() {
@@ -268,73 +151,69 @@ export default function Login() {
 
   const navigate = useNavigate();
 
-  const eyeIconStyle = {
-    position: "absolute",
-    right: "16px",
-    top: "50%",
-    transform: "translateY(-50%)",
-    cursor: "pointer",
-    color: "#9ca3af",
-    fontSize: "18px",
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
 
     try {
-      const response = await fetch(
-        `${API_BASE}/api/login`,
-        {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ email, password }),
-        }
-      );
+      const response = await fetch(`${API_BASE}/api/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
 
       const data = await response.json();
 
       if (!response.ok) {
-        alert(data.message || "Login failed");
+        alert(data.detail || data.message || "Login failed");
         return;
       }
 
-      console.log("Login success:", data);
+      // Save user data
+      localStorage.setItem("token", data.token);
+      localStorage.setItem("user_email", data.user.email);
+      localStorage.setItem("user_name", data.user.name);
+      localStorage.setItem("user_role", data.user.role || "");
+      localStorage.setItem("user_designation", data.user.designation || "");
+      localStorage.setItem("user_id", data.user.id);
 
-      /* ================= SAVE LOGIN DATA ================= */
-
-      // Save email
-      localStorage.setItem("user_email", email);
-
-      // ✅ Save name (for initials)
-      if (data.name) {
-        localStorage.setItem("user_name", data.name);
-      }
-
-      // Save token (if backend sends it)
-      if (data.access_token) {
-        localStorage.setItem("token", data.access_token);
-      }
-
-      // Save role (if backend sends it)
-      if (data.role) {
-        localStorage.setItem("user_role", data.role);
-      }
-
-      /* ================= SUCCESS POPUP ================= */
       setShowSuccess(true);
-/* ✅ CHECK SAVED VALUES */
-console.log("Saved email:", localStorage.getItem("user_email"));
-console.log("Saved name:", localStorage.getItem("user_name"));
-      /* ================= REDIRECT ================= */
+
       setTimeout(() => {
         setShowSuccess(false);
-        navigate("/admin/dashboard");
+
+        const role = (data.user.role || "").toLowerCase();
+        const designation = (data.user.designation || "").toLowerCase();
+
+        console.log("ROLE LOGGED =", role);
+        console.log("DESIGNATION LOGGED =", designation);
+
+        //  QA gets QA dashboard (even if role = employee)
+        if (designation === "qa") {
+          navigate("/qa/dashboard");
+          return;
+        }
+
+        // Admin
+        if (role === "admin") {
+          navigate("/admin/dashboard");
+          return;
+        }
+
+        //  Normal employee
+        if (role === "employee") {
+          navigate("/employee/dashboard");
+          return;
+        }
+
+        // fallback
+        navigate("/");
+
       }, 1500);
 
-    } catch (error) {
-      console.error("Login error:", error);
-      alert("Server error. Please try again later.");
+    } catch (err) {
+      console.error("Login error:", err);
+      alert("Server error. Try later.");
     } finally {
       setLoading(false);
     }
@@ -342,7 +221,6 @@ console.log("Saved name:", localStorage.getItem("user_name"));
 
   return (
     <>
-      {/* SUCCESS POPUP */}
       {showSuccess && (
         <div className="success-overlay">
           <div className="success-popup">
@@ -355,7 +233,19 @@ console.log("Saved name:", localStorage.getItem("user_name"));
         <form className="login-form" onSubmit={handleSubmit}>
           <img src={logo} alt="Logo" className="login-logo" />
 
-          <h2>Login</h2>
+          {/* <h2>Login</h2> */}
+          <h2
+  style={{
+    textAlign: "center",
+    fontSize: "26px",
+    fontWeight: "600",
+    color: "#1f2937",
+    marginBottom: "20px",
+  }}
+>
+  Login
+</h2>
+
 
           <input
             type="email"
@@ -375,8 +265,14 @@ console.log("Saved name:", localStorage.getItem("user_name"));
             />
 
             <span
-              style={eyeIconStyle}
               onClick={() => setShowPassword(!showPassword)}
+              style={{
+                position: "absolute",
+                right: "16px",
+                top: "50%",
+                transform: "translateY(-50%)",
+                cursor: "pointer",
+              }}
             >
               {showPassword ? <FaEyeSlash /> : <FaEye />}
             </span>

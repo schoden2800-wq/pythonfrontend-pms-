@@ -12,6 +12,7 @@
   font-family: Arial, sans-serif;
 }
 
+
 /* LOGIN CARD */
 .login-form {
   width: 360px;
@@ -25,9 +26,9 @@
 
 /* LOGO */
 .login-logo {
-  width: 120px;
+  width: 60px;
   display: block;
-   margin: -30px auto 8px; /* ⬅ moves logo UP */
+   margin: 0px auto 25px; /* ⬅ moves logo UP */
   /* margin: 0 auto 8px; ⬅ controls spacing */
 }
 

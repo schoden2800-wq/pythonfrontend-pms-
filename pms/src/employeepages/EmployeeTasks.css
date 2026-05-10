@@ -1,0 +1,541 @@
+.employee-tasks-page {
+  margin-left: 240px;
+  margin-top: 60px;
+  padding: 24px;
+  min-height: calc(100vh - 60px);
+  background: #f6f7f9;
+}
+
+/* main card */
+.et-container {
+  background: white;
+  border-radius: 20px;
+  padding: 26px;
+  border: 1px solid #ececec;
+}
+
+heading
+.et-heading {
+  font-size: 24px;
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+/* table card */
+.et-table-wrapper {
+  background: white;
+  padding: 16px;
+  border-radius: 18px;
+}
+
+/* table */
+.et-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.et-table th {
+  text-align: left;
+  padding: 12px;
+  background: #f3f4f6;
+  font-weight: 700;
+}
+
+.et-table td {
+  padding: 10px 12px;
+  border-top: 1px solid #eee;
+}
+
+/* section labels */
+.section-title {
+  padding: 10px 8px;
+  font-weight: 800;
+  background: #fafafa;
+}
+
+.section-title.todo { color: #c62828; }
+.section-title.progress { color: #ef6c00; }
+.section-title.completed { color: #2e7d32; }
+
+/* dropdown status selector */
+.status-select {
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-weight: 600;
+  background: white;
+}
+
+/* row hover */
+.et-table tbody tr:hover td {
+  background: #fafafa;
+}
+.qa-issue-row {
+  background: #ffe6e6;
+  color: #b30000;
+  font-size: 0.9rem;
+  border-left: 4px solid #ff0000;
+}
+/* ---- QA failed highlight row ---- */
+.qa-failed-row {
+  background: #ffecec;
+  border-left: 4px solid #ff3b3b;
+}
+
+/* ---- QA issue row under task ---- */
+.qa-issue-row {
+  background: #fff2f2;
+}
+
+/* ---- Right-aligned smaller button ---- */
+.qa-issue-row td {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 25px;
+}
+
+.view-issue-btn {
+  background: #ff4d4d;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.view-issue-btn:hover {
+  background: #e03131;
+  transform: translateY(-1px);
+}
+
+/* ===================== MODAL ===================== */
+
+.qa-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: flex-end;    /* <-- modal slides from right */
+  align-items: stretch;
+  z-index: 999;
+}
+
+/* ---- side drawer modal ---- */
+.qa-modal {
+  width: 420px;
+  background: white;
+  padding: 18px 20px;
+  border-left: 4px solid #ff4d4d;
+  animation: slideIn .25s ease-out;
+  overflow-y: auto;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(100%); opacity: .4; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.qa-modal h3 {
+  margin: 0 0 8px 0;
+}
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.popup-x-btn {
+  border: none;
+  background: #f3f3f3;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 16px;
+  line-height: 32px;
+}
+
+.popup-x-btn:hover {
+  background: #e3e3e3;
+}
+
+/* ---- issue text ---- */
+.qa-modal p {
+  background: #fafafa;
+  border: 1px solid #ddd;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+/* ---- images grid ---- */
+.qa-images {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+  gap: 8px;
+}
+
+/* ---- thumbnail images ---- */
+.qa-image {
+  width: 100%;
+  height: 95px;
+  object-fit: cover;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  cursor: pointer;
+}
+
+/* ---- close button ---- */
+.close-btn {
+  margin-top: 12px;
+  width: 100%;
+  padding: 8px;
+  background: #333;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  background: #111;
+}
+/* dark screen overlay */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* centered popup box */
+.popup-modal {
+  background: white;
+  padding: 22px 26px;
+  border-radius: 14px;
+  width: 420px;
+  max-width: 90vw;
+  box-shadow: 0 20px 60px rgba(0,0,0,.25);
+  animation: popIn .15s ease-out;
+}
+
+/* title */
+.popup-modal h3 {
+  margin-top: 0;
+  margin-bottom: 14px;
+  font-size: 20px;
+}
+
+/* issue and image text boxes */
+.popup-box {
+  border: 1px solid #eee;
+  padding: 10px 12px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  background: #fafafa;
+}
+
+/* images preview */
+.popup-images img {
+  width: 100%;
+  margin-top: 8px;
+  border-radius: 10px;
+}
+
+/* close button */
+.popup-close-btn {
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  background: #111;
+  color: white;
+}
+
+.popup-close-btn:hover {
+  background: #333;
+}
+/* 🔴 View QA Issue button */
+.view-issue-btn {
+  background-color: #ff5a5a;     /* main red */
+  color: #ffffff;                /* white text */
+  border: none;
+  padding: 6px 16px;
+  border-radius: 999px;          /* pill shape */
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 10px;             /* space from dropdown */
+  transition: background-color .2s ease, 
+              box-shadow .2s ease,
+              transform .1s ease;
+  white-space: nowrap;
+}
+
+/* hover */
+.view-issue-btn:hover {
+  background-color: #ff3c3c;
+  box-shadow: 0 3px 8px rgba(0,0,0,.18);
+}
+
+/* click/active */
+.view-issue-btn:active {
+  transform: scale(.97);
+}
+
+/* optional: inside red row (QA failed) contrast tweak */
+.qa-failed-row .view-issue-btn {
+  background-color: #ff4b4b;
+}
+.slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.slider-image {
+  max-width: 280px;
+  max-height: 230px;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.15);
+}
+
+.nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.nav-btn:hover {
+  background: #f2f2f2;
+}
+
+.image-counter {
+  text-align: center;
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.7;
+}
+
+.popup-modal {
+  max-width: 480px;
+}
+/* ⭐ PAGE LAYOUT */
+.employee-tasks-page {
+  margin-left: 240px;
+  margin-top: 60px;
+  padding: 24px;
+  min-height: calc(100vh - 60px);
+  background: #f6f7f9;
+}
+
+/* ⭐ MAIN CARD */
+.et-container {
+  background: white;
+  border-radius: 20px;
+  padding: 26px;
+  border: 1px solid #ececec;
+}
+
+/* ⭐ PAGE HEADING */
+.et-heading {
+  font-size: 26px;
+  font-weight: 800;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+/* 🔶 ORANGE LINE UNDER HEADING */
+.et-heading::after {
+  content: "";
+  display: block;
+  width: 55px;
+  height: 3px;
+  border-radius: 6px;
+  background: #e68d20;
+  margin-top: 6px;
+}
+
+/* ⭐ TABLE CARD */
+.et-table-wrapper {
+  background: white;
+  padding: 16px;
+  border-radius: 18px;
+}
+
+/* ⭐ TABLE */
+.et-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15px;
+}
+
+.et-table th {
+  text-align: left;
+  padding: 12px;
+  background: #f3f4f6;
+  font-weight: 700;
+}
+
+.et-table td {
+  padding: 10px 12px;
+  border-top: 1px solid #eee;
+}
+
+/* ⭐ SECTION TITLES */
+.section-title {
+  padding: 10px 8px;
+  font-weight: 800;
+  background: #fafafa;
+}
+
+.section-title.todo { color: #c62828; }
+.section-title.progress { color: #ef6c00; }
+.section-title.completed { color: #2e7d32; }
+
+/* ⭐ STATUS SELECT */
+.status-select {
+  padding: 6px 10px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-weight: 600;
+  background: white;
+}
+
+/* ⭐ HOVER ROW EFFECT */
+.et-table tbody tr:hover td {
+  background: #fafafa;
+}
+
+/* 🔴 QA FAILED ROW */
+.qa-failed-row {
+  background: #ffecec;
+  border-left: 4px solid #ff3b3b;
+}
+
+/* 🔴 VIEW QA ISSUE BUTTON */
+.view-issue-btn {
+  background-color: #ff5a5a;
+  color: white;
+  border: none;
+  padding: 6px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-left: 10px;
+}
+
+.view-issue-btn:hover {
+  background-color: #ff3c3c;
+}
+
+/* 🌑 MODAL OVERLAY */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+/* 📦 MODAL BOX */
+.popup-modal {
+  background: white;
+  padding: 22px 26px;
+  border-radius: 14px;
+  width: 460px;
+  max-width: 90vw;
+  animation: popIn .15s ease-out;
+}
+
+/* 🧭 HEADER (title + X button) */
+.popup-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ❌ CLOSE BUTTON */
+.popup-x-btn {
+  border: none;
+  background: #f3f3f3;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.popup-x-btn:hover {
+  background: #e3e3e3;
+}
+
+/* 📝 ISSUE BOX */
+.popup-box {
+  border: 1px solid #eee;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: #fafafa;
+}
+
+/* 🖼️ IMAGE SLIDER */
+.slider-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.slider-image {
+  max-width: 320px;
+  max-height: 240px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* ◀ ▶ BUTTONS */
+.nav-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  background: white;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.nav-btn:hover {
+  background: #f2f2f2;
+}
+
+/* ✨ POP ANIMATION */
+@keyframes popIn {
+  from { transform: scale(.92); opacity: .6; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* animation */
+@keyframes popIn {
+  from { transform: scale(.92); opacity: .6; }
+  to   { transform: scale(1); opacity: 1; }
+}

@@ -1,0 +1,148 @@
+/* ================================
+   PAGE BACKGROUND
+================================ */
+.project-detail-page {
+  background: #f4f6fb;
+  min-height: 92vh;
+  padding-top: 5px;
+}
+
+/* header row */
+.project-detail-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.project-detail-header h2 {
+  color: #0f172a;
+  font-weight: 800;
+  letter-spacing: .5px;
+}
+
+/* back button */
+.back-btn {
+  background: #e0e7ff;
+  border: none;
+  border-radius: 999px;
+  padding: 6px 14px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* ================================
+   KANBAN BOARD LAYOUT
+================================ */
+.kanban-board {
+  display: flex;
+  gap: 22px;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* column cards */
+.kanban-column {
+  flex: 1;
+  min-height: 500px;
+  padding: 12px;
+  border-radius: 14px;
+
+  background: linear-gradient(180deg, #ffffff, #eef2ff);
+  border: 1px solid #e5e7eb;
+}
+
+/* column title */
+.kanban-title {
+  text-align: center;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 6px;
+}
+
+/* list container */
+.kanban-list {
+  min-height: 430px;
+}
+
+/* message for empty list */
+.empty-text {
+  text-align: center;
+  color: #9ca3af;
+  margin-top: 20px;
+}
+
+/* ================================
+   TASK CARD STYLE
+================================ */
+.kanban-card {
+  background: white;
+  border-radius: 12px;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  border-left: 6px solid transparent;
+
+  box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+  transition: .18s;
+  cursor: grab;
+}
+
+.kanban-card:hover {
+  transform: translateY(-2px);
+}
+
+/* title */
+.task-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* meta text */
+.task-small {
+  font-size: 12px;
+  color: #475569;
+}
+
+/* ================================
+   STATUS CHIPS — COLORFUL
+================================ */
+.status-chip {
+  display: inline-block;
+  padding: 3px 12px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  margin-top: 4px;
+}
+
+/* TO DO */
+.status-chip.todo {
+  background: #fee2e2;
+  color: #991b1b;
+}
+.kanban-card.todo { border-left-color: #ef4444; }
+
+/* IN PROGRESS */
+.status-chip.in_progress {
+  background: #fff2cc;
+  color: #92400e;
+}
+.kanban-card.in_progress { border-left-color: #f59e0b; }
+
+/* COMPLETED */
+.status-chip.completed {
+  background: #d1fae5;
+  color: #065f46;
+}
+.kanban-card.completed { border-left-color: #10b981; }
+/* QA PASSED */
+.status-chip.qa_passed {
+  background: #e0f2fe;   /* light blue */
+  color: #0369a1;        /* deep blue */
+}
+
+.kanban-card.qa_passed {
+  border-left-color: #0ea5e9;  /* bright cyan blue */
+}

@@ -1,0 +1,376 @@
+/* =========================
+   PROJECTS PAGE WRAPPER
+========================= */
+.projects-page-card {
+  margin-left: 240px;
+  margin-top: 60px;
+  padding: 24px;
+  min-height: calc(100vh - 60px);
+  background: var(--bg-main);
+}
+
+/* =========================
+   HEADER
+========================= */
+.projects-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.projects-header h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+/* =========================
+   TABLE WRAPPER
+========================= */
+.projects-table-wrapper {
+  background: #ffffff;
+  border-radius: 16px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+}
+
+/* =========================
+   TABLE
+========================= */
+.projects-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.projects-table thead {
+  background: var(--brand-soft);
+}
+
+.projects-table th {
+  padding: 14px 16px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-dark);
+}
+
+.projects-table td {
+  padding: 14px 16px;
+  font-size: 14px;
+  color: #444;
+  border-top: 1px solid #f0f0f0;
+}
+
+.projects-table td[colspan] {
+  text-align: center;
+  color: #888;
+  padding: 30px;
+}
+
+/* =========================
+   ROW HOVER
+========================= */
+.projects-table tbody tr:hover {
+  background: #fafafa;
+}
+
+/* =========================
+   STATUS / PRIORITY
+========================= */
+.projects-table td:nth-child(3),
+.projects-table td:nth-child(4) {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+/* =========================
+   ACTION BUTTONS
+========================= */
+.edit-btn {
+  background: var(--brand);
+  color: #ffffff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.edit-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.add-project-btn {
+  background: #e68d20;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add-project-btn:hover {
+  opacity: 0.9;
+}
+
+/* =========================
+   MODAL
+========================= */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+}
+
+.modal-card {
+  background: #fff;
+  width: 620px;
+  max-width: 96%;
+  max-height: 85vh;
+  overflow-y: auto;
+  border-radius: 16px;
+  padding: 24px 26px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.modal-card h3 {
+  margin: 0 0 18px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* form inputs */
+.modal-card input,
+.modal-card textarea,
+.modal-card select {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 12px;
+  border: 1.5px solid #ddd;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.modal-card textarea {
+  min-height: 80px;
+  resize: vertical;
+}
+
+.modal-card input:focus,
+.modal-card textarea:focus,
+.modal-card select:focus {
+  outline: none;
+  border-color: #e68d20;
+}
+
+/* row fields */
+.modal-card .row {
+  display: flex;
+  gap: 12px;
+}
+
+.modal-card input[type="file"] {
+  padding: 8px 10px;
+  font-size: 13px;
+  border: 1.5px dashed #ccc;
+  background: #fafafa;
+  cursor: pointer;
+}
+
+/* modal actions */
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.modal-actions .edit-btn {
+  background: #e68d20;
+  padding: 11px 22px;
+  border-radius: 12px;
+}
+
+.modal-actions .delete-btn {
+  background: #eee;
+  color: #333;
+  padding: 11px 22px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.modal-actions .delete-btn:hover {
+  background: #ddd;
+}
+
+/* =========================
+   TASK STATUS BADGES
+========================= */
+
+.status.todo {
+  background: #e0ecff;
+  color: #2563eb;
+}
+
+.status.in_progress {
+  background: #fff3e3;
+  color: #d97706;
+}
+
+.status.completed {
+  background: #e6f7ee;
+  color: #059669;
+}
+
+/* =========================
+   EMPLOYEE MULTI-SELECT
+========================= */
+
+.employee-dropdown {
+  position: relative;
+  width: 100%;
+  font-family: system-ui,-apple-system,Segoe UI,Roboto;
+  font-size: 12px;
+    margin-bottom: 14px;  
+}
+
+.dropdown-selected {
+  min-height: 32px;
+  border: 1px solid #d1d5db;
+  border-radius: 10px;
+  padding: 6px 28px 6px 8px;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 4px;
+  position: relative;
+}
+
+.dropdown-selected:empty::before {
+  content: "Select employee(s)";
+  color: #9ca3af;
+}
+
+.dropdown-selected::after {
+  content: "▾";
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 12px;
+  color: #6b7280;
+}
+
+/* dropdown list */
+.dropdown-menu {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  padding: 4px 0;
+  max-height: 220px;
+  overflow-y: auto;
+  z-index: 100;
+}
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;        /* <— small normal space */
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+
+.dropdown-item:hover {
+  background: #f3f4ff;
+}
+
+.dropdown-item input[type="checkbox"] {
+  
+  width: 12px;
+  height: 12px;
+  margin: 0;           /* keep checkbox aligned */
+  accent-color: #2563eb;
+  cursor: pointer;
+}
+
+.dropdown-item span {
+  font-size: 12px;
+  font-weight: 600;
+  margin-left: 10px; 
+  color: #111827;
+}
+
+
+/* =========================
+   LABELS & ERRORS
+========================= */
+
+.modal-card label {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+  color: #111827;
+}
+
+.error {
+  color: #dc2626;
+  font-size: 12px;
+  margin-top: -6px;
+  margin-bottom: 6px;
+}
+.tab-buttons {
+  display: flex;
+  gap: 12px;
+  margin: 10px 0 20px 0;
+}
+
+/* base pill */
+.tab {
+  padding: 9px 26px;
+  border-radius: 999px;
+  border: 1px solid #cfcfcf;
+  background: #f3f3f3;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: 600;
+  transition: 0.15s ease;
+}
+
+.tab:hover {
+  opacity: 0.9;
+}
+
+/* selected pill */
+.tab.active {
+  background: #e38c1a;
+  border-color: #e38c1a;
+  color: white;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 1024px) {
+  .projects-page-card {
+    margin-left: 0;
+  }
+}

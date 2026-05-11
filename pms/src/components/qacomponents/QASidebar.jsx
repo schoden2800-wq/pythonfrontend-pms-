@@ -3,7 +3,8 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { MdDashboard } from "react-icons/md";
 import { FaClipboardCheck } from "react-icons/fa";
 import logo from "../../assets/logo.png";
-import "../qacomponents/QALayout.css";
+// import "../qacomponents/QALayout.css";
+import "./qalayout.css";
 
 export default function QASidebar() {
   const navigate = useNavigate();
